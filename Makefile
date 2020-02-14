@@ -21,14 +21,13 @@ DIR_O	= temporary
 
 HEADER	= inc
 
-SOURCES	= 	ft_printf_char.c	ft_printf_nbr.c\
+SOURCES	= 	ft_printf_nbr.c		find_nbr.c\
 			ft_printf_p.c		ft_printf_str.c\
 			ft_printf_u.c		ft_printf_x.c\
 			ft_printf_xx.c		ft_printf.c\
 			ft_itoa_hex_int.c	ft_itoa_hex_long.c\
-			initialize.c		utils_str.c\
-			save_flag.c			utils_nbr.c\
-			find_nbr.c		
+			utils_str.c			utils_nbr.c\
+			save_flag.c
 
 SRCS	= $(addprefix $(DIR_S)/,$(SOURCES))
 
