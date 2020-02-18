@@ -12,19 +12,19 @@
 
 #include "../ft_printf.h"
 
-void	width_up_cut_down_xx(unsigned int nb, t_list *list)
+void	width_upicut_down_xx(unsigned int nb, t_list *list)
 {
 	if (list->var.sign == 0 && list->var.zero == 0)
 		write_sp(list->var.width - list->var.size_len, list);
 	if (list->var.sign == 0 && list->var.zero == 1
-			&& list->var._cut == 1)
+			&& list->var.icut == 1)
 		write_sp(list->var.width - list->var.size_len, list);
 	if (list->var.sign == 0 && list->var.zero == 1
-			&& list->var._cut == 0)
+			&& list->var.icut == 0)
 		write_z(list->var.width - list->var.size_len, list);
-	if (list->var.cut != 0 && list->var._cut == 1)
+	if (list->var.cut != 0 && list->var.icut == 1)
 		ft_itoa_hex_int(nb, 'X', list);
-	else if (list->var.cut == 0 && nb == 0 && list->var._cut == 1)
+	else if (list->var.cut == 0 && nb == 0 && list->var.icut == 1)
 		write(1, " ", 0);
 	else
 		ft_itoa_hex_int(nb, 'X', list);
@@ -44,7 +44,7 @@ void	width_up_xx(unsigned int nb, t_list *list)
 			write_sp(list->var.width - list->var.cut, list);
 	}
 	else
-		width_up_cut_down_xx(nb, list);
+		width_upicut_down_xx(nb, list);
 }
 
 void	width_down_xx(unsigned int nb, t_list *list)
@@ -66,7 +66,7 @@ void	ft_printf_xx(t_list *list)
 	list->var.size_len = len_nb_int(nb);
 	if (list->var.size_len == 0)
 		list->var.size_len = 1;
-	if (list->var._cut == 1 && list->var.cut == 0 && nb == 0)
+	if (list->var.icut == 1 && list->var.cut == 0 && nb == 0)
 		list->var.size_len = 0;
 	list->var.size_z = list->var.cut - list->var.size_len;
 	if (list->var.width >= list->var.size_len)

@@ -46,6 +46,6 @@ void			ft_itoa_hex_long(unsigned long int n, char x, t_list *list)
 	if (x == 'x')
 		base = list->var.basex;
 	else if (x == 'X')
-		base = list->var.baseX;
+		base = list->var.basexx;
 	convert_long(base, n, list);
 }

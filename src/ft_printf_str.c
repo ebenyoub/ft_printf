@@ -52,7 +52,7 @@ void	ft_str_write(char *str, int a, t_list *list)
 	i = 0;
 	if (str == NULL)
 	{
-		if (list->var._cut == 0)
+		if (list->var.icut == 0)
 		{
 			write(1, "(null)", 6);
 			list->var.ret += 6;
@@ -84,7 +84,7 @@ void	ft_printf_str(t_list *list)
 		a = ft_strlen(str);
 	else
 		a = 6;
-	if (a > list->var.cut && list->var._cut == 1)
+	if (a > list->var.cut && list->var.icut == 1)
 		a = list->var.cut;
 	if (list->var.width > a && list->var.sign == 0)
 		write_sp(list->var.width - a, list);

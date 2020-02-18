@@ -14,13 +14,13 @@
 
 int		ocut(const char *str, int i, t_list *list)
 {
-	list->var._cut = 1;
+	list->var.icut = 1;
 	list->var.b = find_nbr(str, i, list);
 	list->var.cut = list->var.size;
 	if (list->var.cut < 0)
 	{
 		list->var.cut = 0;
-		list->var._cut = 0;
+		list->var.icut = 0;
 	}
 	return (list->var.b);
 }

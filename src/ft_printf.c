@@ -31,17 +31,17 @@ void	tab_init(int i, t_list *list)
 void	data_init(t_list *list)
 {
 	ft_strcpy(list->var.basex, "0123456789abcdef");
-	ft_strcpy(list->var.baseX, "0123456789ABCDEF");
+	ft_strcpy(list->var.basexx, "0123456789ABCDEF");
 	ft_strcpy(list->var.index, "scdixXpu%");
 	list->var.size_len = 0;
 	list->var.size_z = 0;
 	list->var.width = 0;
 	list->var.star = 0;
-	list->var._cut = 0;
+	list->var.icut = 0;
 	list->var.sign = 0;
 	list->var.zero = 0;
 	list->var.cut = 0;
-	list->var._s = 0;
+	list->var.is = 0;
 }
 
 int		find_index(char *tab, char element)

@@ -12,21 +12,21 @@
 
 #include "../ft_printf.h"
 
-void	width_up_cut_down(unsigned long int nb, t_list *list)
+void	width_upicut_down(unsigned long int nb, t_list *list)
 {
 	if (list->var.sign == 0 && list->var.zero == 0)
 		write_sp(list->var.width - list->var.size_len, list);
 	if (list->var.sign == 0 && list->var.zero == 1
-			&& list->var._cut == 1)
+			&& list->var.icut == 1)
 		write_sp(list->var.width - list->var.size_len, list);
 	write(1, "0x", 2);
 	list->var.ret += 2;
 	if (list->var.sign == 0 && list->var.zero == 1
-			&& list->var._cut == 0)
+			&& list->var.icut == 0)
 		write_z(list->var.width - list->var.size_len, list);
-	if (list->var.cut != 0 && list->var._cut == 1)
+	if (list->var.cut != 0 && list->var.icut == 1)
 		ft_itoa_hex_long(nb, 'x', list);
-	else if (list->var.cut == 0 && list->var._cut == 1 && nb == 0)
+	else if (list->var.cut == 0 && list->var.icut == 1 && nb == 0)
 		write(1, "", 0);
 	else
 		ft_itoa_hex_long(nb, 'x', list);
@@ -48,7 +48,7 @@ void	width_up_p(unsigned long int nb, t_list *list)
 			write_sp(list->var.width - list->var.cut, list);
 	}
 	else
-		width_up_cut_down(nb, list);
+		width_upicut_down(nb, list);
 }
 
 void	width_down_p(unsigned long int nb, t_list *list)
@@ -64,7 +64,7 @@ void	width_down_p(unsigned long int nb, t_list *list)
 	{
 		write(1, "0x", 2);
 		list->var.ret += 2;
-		if (nb == 0 && list->var.cut == 0 && list->var._cut == 1)
+		if (nb == 0 && list->var.cut == 0 && list->var.icut == 1)
 			write(1, "", 0);
 		else
 			ft_itoa_hex_long(nb, 'x', list);
@@ -79,7 +79,7 @@ void	ft_printf_p(t_list *list)
 	pointer = va_arg(list->ap, char *);
 	nb = (uintmax_t)pointer;
 	list->var.size_len = len_nb_long(nb);
-	if (nb == 0 && list->var._cut == 0)
+	if (nb == 0 && list->var.icut == 0)
 		list->var.width -= 1;
 	list->var.width -= 2;
 	list->var.size_z = list->var.cut - list->var.size_len;
