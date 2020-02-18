@@ -15,11 +15,13 @@ NAME	= libftprintf.a
 
 FLAGS	= -Wall -Wextra -Werror
 
+CC		= gcc
+
 DIR_S	= src
 
 DIR_O	= temporary
 
-HEADER	= inc
+HEADER	= ft_printf.h
 
 SOURCES	= 	ft_printf_nbr.c		find_nbr.c\
 			ft_printf_p.c		ft_printf_str.c\
@@ -35,14 +37,13 @@ SOBJS	= $(addprefix $(DIR_O)/,$(SOURCES:.c=.o))
 
 all: $(NAME)
 
-$(NAME): $(SOBJS) $(LOBJS)
-	@ar urs $(NAME) $(SOBJS)
-	@ranlib $(NAME)
-	$(CC) -g $(FLAGS) $(NAME) main.c
+$(NAME): $(SOBJS) $(HEADER)
+	ar rc $(NAME) $(SOBJS)
+	ranlib $(NAME)
 
 $(DIR_O)/%.o: $(DIR_S)/%.c
 	@mkdir -p temporary
-	@$(CC) $(FLAGS) -I $(HEADER) -o $@ -c $<
+	$(CC) $(FLAGS) -I $(HEADER) -o $@ -c $<
 
 clean:
 	@rm -f $(SOBJS)
