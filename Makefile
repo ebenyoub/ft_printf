@@ -6,7 +6,7 @@
 #    By: ebenyoub <ebenyoub@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/12/16 18:30:23 by ebenyoub     #+#   ##    ##    #+#        #
-#    Updated: 2020/02/14 11:55:00 by ebenyoub    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/02/18 17:29:16 by ebenyoub         ###   ########lyon.fr    #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -38,15 +38,17 @@ SOBJS	= $(addprefix $(DIR_O)/,$(SOURCES:.c=.o))
 all: $(NAME)
 
 $(NAME): $(SOBJS) $(HEADER)
-	ar rc $(NAME) $(SOBJS)
+	@ar rc $(NAME) $(SOBJS)
 	ranlib $(NAME)
 
-$(DIR_O)/%.o: $(DIR_S)/%.c
+$(DIR_O)/%.o: $(DIR_S)/%.c $(HEADER)
+	@echo "\033[0;32m [OK] \033[0m       \033[0;33m Compiling:\033[0m" $<
 	@mkdir -p temporary
-	$(CC) $(FLAGS) -I $(HEADER) -o $@ -c $<
+	@$(CC) $(FLAGS) -I $(HEADER) -o $@ -c $<
 
 clean:
-	@rm -f $(SOBJS)
+	@echo "\033[0;32m--> Fichers Supprimés\033[0m"
+	@rm -f $(SOBJS) 
 	@rm -rf $(DIR_O)
 
 fclean: clean
